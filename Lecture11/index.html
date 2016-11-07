@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <style> body { font-size: 1.5em; } </style>
+    <title>Expressions and Interpolation</title>
+  </head>
+  <body ng-app="MsgApp">
+    <h3> Name Calculator </h3>
+    <div ng-controller="MsgController">
+      <div>
+        Your Name:
+        <input type="text" ng-model="name">
+        {{name}}
+      </div>
+      <div>
+        <button ng-click="feedAnurag()">Feed Anurag</button>
+        Cost: {{cookieCost | currency : "##" : 4}}
+        <br>
+        <img ng-src="images/anurag_{{stateOfBeing}}.png">
+      </div>
+    </div>
+  </body>
+</html>
