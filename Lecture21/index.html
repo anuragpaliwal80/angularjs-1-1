@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app='ShoppingListApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <style> body { font-size: 1.5em; } </style>
+    <title>Custom Service</title>
+  </head>
+  <body>
+    <h3>  Custom Service </h3>
+    <div ng-controller="ShoppingListController1 as list1">
+      Shopping List #1
+      <input type="text" ng-model="list1.itemName" placeholder="item name">
+      <input type="text" ng-model="list1.itemQuantity" placeholder="item quantity">
+      <button ng-click="list1.addItem()">Add Item to Shooping List</button>
+      <ol>
+        <li ng-repeat="item in list1.items">
+          {{ item.quantity}} of {{ item.name }}
+          <button ng-click="lis1.removeItem($index)">Remove Item</button>
+        </li>
+      </ol>
+      <div class="error">Error: {{list1.errorMessage}}</div>
+    </div>
+
+    <div ng-controller="ShoppingListController2 as list2">
+      Shopping List # 2 (limited to 3)
+      <input type="text" ng-model="list2.itemName" placeholder="item name">
+      <input type="text" ng-model="list2.itemQuantity" placeholder="item quantity">
+      <button ng-click="list2.addItem()">Add Item to Shooping List</button>
+      <ol>
+        <li ng-repeat="item in list2.items">
+          {{ item.quantity}} of {{ item.name }}
+          <button ng-click="lis2.removeItem($index)">Remove Item</button>
+        </li>
+      </ol>
+      <div class="error">Error: {{list2.errorMessage}}</div>
+    </div>
+  </body>
+</html>
