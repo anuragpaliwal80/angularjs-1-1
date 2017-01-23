@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app='SimpleFormsApp'>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="">
+    <title>Simple Form Validation</title>
+  </head>
+  <body ng-controller="RegistrationController as reg">
+    <h3> Simple Form Validation </h3>
+    <fieldset>
+      <legend>Registration</legend>
+      <form name="regForm" novalidate>
+        <input type="text" name="username" placeholder="Pick a username"
+          ng-model="reg.user.username"
+          required
+          minlength="4"
+          ng-maxlength="10">
+          {{ reg.user.username }}
+          <span
+            ng-if="(regForm.username.$error.minlength ||
+            regForm.username.$error.required) && regForm.username.$touched">
+            Username must be atleast 4 char long.
+          </span>
+          <span
+            ng-if="regForm.username.$error.maxlength &&
+            regForm.username.$touched">
+            Username must not be longer than 10 char.
+          </span>
+          <br>
+        <input type="email" name="email" placeholder="Email"
+          ng-model="reg.user.email"
+          required>
+          <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+            Must be a valid email.
+          </span>
+          <br>
+
+        <input type="text" name="phone" placeholder="Phone ###-###-####"
+          ng-model="reg.user.phone"
+          pattern="(\d{3})-(\d{3})-(\d{4})">
+          <span ng-if="regForm.phone$invalid && regForm.phone.$touched">
+            Must be a valid number.
+          </span>
+
+        <button
+          ng-disabled="regForm.$invalid"
+          ng-click="reg.submit()">Summit
+        </button>
+        <div style="margin-top: 10px;">
+          Form Valid? {{ regForm.$valid }}
+        </div>
+      </form>
+    </fieldset>
+
+    <div id="info" ng-if="reg.completed">
+      Username: {{ reg.user.username }}
+      Email: {{ reg.user.email }}
+      Phone: {{ reg.user.phone }}
+    </div>
+
+    <script src="lib/angular.min.js"></script>
+    <script src="src/app.js"></script>
+
+  </body>
+</html>

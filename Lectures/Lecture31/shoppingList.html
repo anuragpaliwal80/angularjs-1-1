@@ -1,0 +1,10 @@
+{{ list.title }}
+<ol>
+  <li ng-repeat="item in list.items">
+    {{ item.quantity}} of {{item.name}}
+    <button ng-click="list.onRemove({index: $index})">Remove Item</button>
+  </li>
+</ol>
+<div class="error">
+  WARNING! COOKIES DEDECTED!!
+</div>
